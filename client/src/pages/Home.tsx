@@ -623,113 +623,73 @@ export default function Home() {
       {/* ── MAIN CONTENT ── */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: imagesReady && phase === "done" ? 1 : 0 }} transition={{ duration: 0.9 }}>
 
-        {/* ═══════════ HERO SECTION (HIGH VISIBILITY SPOTLIGHT) ═══════════ */}
-        <section ref={heroRef} className="relative min-h-screen flex flex-col justify-between items-center px-4 pt-12 pb-10 sm:pt-16 sm:pb-12 overflow-hidden">
-          {/* Subtle warm ambient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#fbf8f2] via-[#f7f2e8] to-[#f4ede0]" />
-          <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "radial-gradient(circle, #6B7D3A 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-          
-          <AmbientGlow colors="radial-gradient(circle, rgba(212,175,55,0.22) 0%, rgba(107,125,58,0.12) 50%, transparent 75%)" />
+        {/* ═══════════ HERO ═══════════ */}
+        <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <motion.div className="absolute inset-0 w-full h-[120%] -top-[10%]" style={{ y: heroBgY }}>
+            <img
+              src="/couple2.jpg"
+              alt="Athira Raj & Sarath Raj"
+              className="w-full h-full object-cover object-[center_25%] md:object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-[#fdfbf7]" />
+          </motion.div>
 
-          {/* Falling decorative petals */}
-          {[...Array(6)].map((_, i) => (
-            <Petal key={i} delay={i * 0.7} />
-          ))}
+          <motion.div className="relative z-10 text-center px-4 sm:px-6 py-28 sm:py-32" style={{ opacity: heroOpacity }}>
+            <motion.p className="text-xs sm:text-sm tracking-[0.4em] uppercase text-white/90 mb-4 sm:mb-6 font-light"
+              initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.9 }}
+            >We are getting Married</motion.p>
 
-          <motion.div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center my-auto" style={{ opacity: heroOpacity }}>
-            
-            {/* Top Invocation & Tagline */}
-            <motion.p className="text-[11px] sm:text-xs md:text-sm tracking-[0.35em] uppercase text-[#b89a63] font-medium mb-3"
-              initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.7 }}
+            <motion.h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif leading-none mb-4 sm:mb-6"
+              initial={{ opacity: 0, scale: 0.88 }} animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              || Om Shree Ganeshay Namah ||
-            </motion.p>
-
-            <motion.p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-[#7A7266] mb-4 sm:mb-6 font-light"
-              initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}
-            >
-              We are getting Married
-            </motion.p>
-
-            {/* Names Title */}
-            <motion.h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#4F5D2A] leading-tight mb-6 sm:mb-8"
-              initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span>Athira Raj</span>
-              <span className="text-[#D4AF37] mx-2.5 sm:mx-4 font-normal">&amp;</span>
-              <span>Sarath Raj</span>
+              <span className="text-white drop-shadow-2xl">Athira Raj</span>
+              <span className="text-[#D4AF37] mx-2 sm:mx-4 md:mx-5 drop-shadow-2xl">&amp;</span>
+              <span className="text-white drop-shadow-2xl">Sarath Raj</span>
             </motion.h1>
 
-            {/* ── CENTRAL COUPLE SPOTLIGHT (CLEAR VISIBILITY ON MOBILE & DESKTOP) ── */}
-            <motion.div
-              className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[420px] mx-auto my-2 group"
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              style={{ y: heroBgY }}
-            >
-              {/* Outer decorative gold frame */}
-              <div className="relative rounded-[2rem] p-2 sm:p-2.5 bg-gradient-to-b from-[#e8d7ab] via-[#fdfbf7] to-[#d4af37] shadow-2xl transition-transform duration-500 group-hover:scale-[1.015]">
-                {/* Inner shadow & photo wrapper */}
-                <div className="relative overflow-hidden rounded-[1.6rem] bg-[#ede5d8] aspect-[3/4] shadow-inner">
-                  <img
-                    src="/couple2.jpg"
-                    alt="Athira Raj & Sarath Raj"
-                    className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
-                    loading="eager"
-                  />
-                  {/* Subtle edge vignette that keeps center faces 100% bright and clear */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
+            <motion.p className="text-lg sm:text-xl md:text-2xl text-white/95 font-light tracking-widest mb-8 sm:mb-10"
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}
+            >Sunday · 13 September 2026</motion.p>
 
-              {/* Ornate corner flourishes */}
-              <div className="absolute -top-3 -left-3 text-[#D4AF37] text-xl pointer-events-none select-none">✦</div>
-              <div className="absolute -top-3 -right-3 text-[#D4AF37] text-xl pointer-events-none select-none">✦</div>
-              <div className="absolute -bottom-3 -left-3 text-[#D4AF37] text-xl pointer-events-none select-none">✦</div>
-              <div className="absolute -bottom-3 -right-3 text-[#D4AF37] text-xl pointer-events-none select-none">✦</div>
-            </motion.div>
-
-            {/* Date & Subtitle */}
-            <motion.p className="text-base sm:text-xl md:text-2xl text-[#6B7D3A] font-serif tracking-wider mt-6 sm:mt-7 mb-6"
-              initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.7 }}
-            >
-              Sunday · 13 September 2026
-            </motion.p>
-
-            {/* View Invitation Button */}
+            {/* ── VIEW INVITATION BUTTON – burst + scroll + highlight ── */}
             <motion.button
               ref={buttonRef}
               onClick={handleViewInvitation}
-              className="relative inline-flex items-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#D4AF37] text-white font-medium text-xs sm:text-sm tracking-[0.2em] uppercase shadow-lg overflow-hidden group cursor-pointer"
-              initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95, duration: 0.6 }}
-              whileHover={{ scale: 1.06, boxShadow: "0 0 35px rgba(212,175,55,0.65)" }}
-              whileTap={{ scale: 0.92 }}
+              className="relative inline-flex items-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#D4AF37] text-white font-medium text-xs sm:text-sm tracking-[0.2em] uppercase shadow-xl overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.6 }}
+              whileHover={{ scale: 1.08, boxShadow: "0 0 40px rgba(212,175,55,0.7), 0 20px 50px rgba(212,175,55,0.4)" }}
+              whileTap={{ scale: 0.9 }}
             >
               <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent"
                 initial={{ x: "-100%" }}
                 animate={{ x: "200%" }}
                 transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 1.8, ease: "easeInOut" }}
               />
+              {[0, 0.5, 1].map((delay) => (
+                <motion.span key={delay}
+                  className="absolute inset-0 rounded-full border border-white/30"
+                  animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
+                  transition={{ duration: 2, delay, repeat: Infinity, ease: "easeOut" }}
+                />
+              ))}
               <span className="relative z-10">View Invitation</span>
               <motion.span className="relative z-10 text-base sm:text-lg"
                 animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.25, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >💍</motion.span>
             </motion.button>
-
           </motion.div>
 
-          {/* Scroll Down Indicator */}
-          <motion.div className="relative z-10 mt-6 flex flex-col items-center gap-1.5"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }}
+          {/* Scroll indicator */}
+          <motion.div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
           >
-            <motion.div className="w-px h-8 sm:h-10 bg-[#D4AF37]/60"
+            <motion.div className="w-px h-10 sm:h-12 bg-white/50"
               animate={{ scaleY: [0, 1, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             />
-            <span className="text-[#b89a63] text-[10px] sm:text-xs tracking-widest uppercase font-medium">Scroll</span>
+            <span className="text-white/70 text-[10px] sm:text-xs tracking-widest uppercase">Scroll</span>
           </motion.div>
         </section>
 
