@@ -1100,7 +1100,7 @@ export default function Home() {
               { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
               { icon: <MuhurthamIcon className="w-12 h-12" />, title: "Muhurtham", body: "07:00 AM – 08:00 AM" },
               { icon: <TempleIcon className="w-12 h-12" />, title: "Venue", body: "Guruvayur Shri Krishna Temple", link: MAP_LOCATION_URL, linkText: "Get Directions" },
-              { icon: <FeastIcon className="w-12 h-12" />, title: "Lunch", body: "Traditional Sadhya Feast to follow" },
+              { icon: <FeastIcon className="w-12 h-12" />, title: "Reception", body: "12 PM onwards" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="ceremony" index={i} />
             ))}
