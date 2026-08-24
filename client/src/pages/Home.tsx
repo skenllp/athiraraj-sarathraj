@@ -5,13 +5,242 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSp
    CONSTANTS & CONFIGURATION
 ═══════════════════════════════════════════════════ */
 const SITE_URL = "https://athiraraj-sarathraj.vercel.app/";
-const MAP_LOCATION_URL = "https://maps.google.com/?q=11.042263,75.858437";
-const MAP_EMBED_URL = "https://maps.google.com/maps?q=11.042263,75.858437&hl=en&z=15&output=embed";
+const MAP_LOCATION_URL = "https://maps.app.goo.gl/5574fqVibNAKak8k9";
+const MAP_EMBED_URL = "https://maps.google.com/maps?q=Guruvayur+Shri+Krishna+Temple&hl=en&z=16&output=embed";
 
 const PRELOAD_IMAGES = [
-  "/couple1.jpg",
   "/couple2.jpg",
+  "/couple1.jpg",
+  "/groom.jpg",
+  "/bride.jpg",
 ];
+
+/* ═══════════════════════════════════════════════════
+   PREMIUM CUSTOM VECTOR ICONS (Gold & Olive Palette)
+═══════════════════════════════════════════════════ */
+
+export function RingsIcon({ className = "w-6 h-6" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldGradRings" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F5E6B0" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#9E7C12" />
+        </linearGradient>
+      </defs>
+      <circle cx="20" cy="27" r="11" stroke="url(#goldGradRings)" strokeWidth="3.2" fill="none" />
+      <circle cx="29" cy="23" r="10" stroke="url(#goldGradRings)" strokeWidth="2.8" fill="none" />
+      {/* Sparkling diamond on top ring */}
+      <path d="M20 7L23.5 12L20 17L16.5 12Z" fill="url(#goldGradRings)" />
+      <path d="M20 3V6M20 18V21M13 12H10M27 12H30" stroke="url(#goldGradRings)" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function CalendarIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="calGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F7ECC9" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#9C7A1C" />
+        </linearGradient>
+      </defs>
+      {/* Calendar body */}
+      <rect x="7" y="10" width="34" height="31" rx="5" fill="#FFFDF9" stroke="url(#calGold)" strokeWidth="2.2" />
+      {/* Header bar */}
+      <path d="M7 15C7 12.2386 9.23858 10 12 10H36C38.7614 10 41 12.2386 41 15V17H7V15Z" fill="url(#calGold)" />
+      {/* Ring binders */}
+      <rect x="14" y="6" width="2.8" height="6.5" rx="1.4" fill="#6B7D3A" />
+      <rect x="31" y="6" width="2.8" height="6.5" rx="1.4" fill="#6B7D3A" />
+      {/* Month Label */}
+      <text x="24" y="15" textAnchor="middle" fill="#FFFFFF" fontSize="6.5" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.8">SEP</text>
+      {/* Day Number */}
+      <text x="24" y="31" textAnchor="middle" fill="#4F5D2A" fontSize="13" fontWeight="bold" fontFamily="serif">13</text>
+      {/* Auspicious dot */}
+      <circle cx="24" cy="36" r="1.5" fill="#D4AF37" />
+    </svg>
+  );
+}
+
+export function MuhurthamIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="#D4AF37" />
+          <stop offset="45%" stopColor="#F5B027" />
+          <stop offset="100%" stopColor="#FFF9D2" />
+        </linearGradient>
+        <linearGradient id="diyaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#EAD8A4" />
+          <stop offset="60%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8F7118" />
+        </linearGradient>
+      </defs>
+      {/* Diya Base */}
+      <path d="M11 26C11 33.18 16.82 39 24 39C31.18 39 37 33.18 37 26H11Z" fill="url(#diyaGrad)" />
+      <ellipse cx="24" cy="26" rx="13" ry="3.2" fill="#FFFDF8" stroke="url(#diyaGrad)" strokeWidth="1.4" />
+      <rect x="20" y="39" width="8" height="3" rx="1" fill="url(#diyaGrad)" />
+      {/* Sacred Flame */}
+      <path d="M24 7C24 7 17.5 16.5 17.5 20.5C17.5 24.09 20.41 27 24 27C27.59 27 30.5 24.09 30.5 20.5C30.5 16.5 24 7 24 7Z" fill="url(#flameGrad)" />
+      <path d="M24 13.5C24 13.5 20.5 19.5 20.5 21.8C20.5 23.7 22.1 25.2 24 25.2C25.9 25.2 27.5 23.7 27.5 21.8C27.5 19.5 24 13.5 24 13.5Z" fill="#FFFFFF" fillOpacity="0.9" />
+      {/* Radiating aura */}
+      <path d="M24 2V4.5M12 9.5L14 11.5M36 9.5L34 11.5M7 21H9.5M41 21H38.5" stroke="#D4AF37" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function TempleIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="templeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F5E6B0" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8C6E15" />
+        </linearGradient>
+      </defs>
+      {/* Kalash on top spire */}
+      <path d="M24 4.5L25.5 8H22.5L24 4.5Z" fill="url(#templeGrad)" />
+      <circle cx="24" cy="4" r="1.2" fill="url(#templeGrad)" />
+      {/* Spire tiers */}
+      <path d="M19.5 12L24 7.5L28.5 12H19.5Z" fill="url(#templeGrad)" />
+      <path d="M16.5 17L24 10.5L31.5 17H16.5Z" fill="url(#templeGrad)" opacity="0.95" />
+      <path d="M13.5 22L24 14.5L34.5 22H13.5Z" fill="url(#templeGrad)" opacity="0.88" />
+      {/* Main Dome */}
+      <path d="M9.5 27.5C9.5 22.8 15 22 24 22C33 22 38.5 22.8 38.5 27.5H9.5Z" fill="url(#templeGrad)" />
+      {/* Pillars */}
+      <rect x="11.5" y="27.5" width="3.5" height="13" rx="0.8" fill="#6B7D3A" />
+      <rect x="19" y="27.5" width="2.8" height="13" rx="0.5" fill="#6B7D3A" />
+      <rect x="26.2" y="27.5" width="2.8" height="13" rx="0.5" fill="#6B7D3A" />
+      <rect x="33" y="27.5" width="3.5" height="13" rx="0.8" fill="#6B7D3A" />
+      {/* Inner sacred arch */}
+      <path d="M20.5 40.5V33C20.5 31 22 29.5 24 29.5C26 29.5 27.5 31 27.5 33V40.5H20.5Z" fill="#D4AF37" />
+      {/* Base */}
+      <rect x="7" y="40.5" width="34" height="3" rx="1" fill="url(#templeGrad)" />
+    </svg>
+  );
+}
+
+export function FeastIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#7E9640" />
+          <stop offset="100%" stopColor="#4A5826" />
+        </linearGradient>
+        <linearGradient id="goldThali" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F7E6B2" />
+          <stop offset="60%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#96771C" />
+        </linearGradient>
+      </defs>
+      {/* Traditional Banana Leaf */}
+      <path d="M7 24C7 16.5 14.5 11.5 24 11.5C33.5 11.5 41 16.5 41 24C41 31.5 33.5 36.5 24 36.5C14.5 36.5 7 31.5 7 24Z" fill="url(#leafGrad)" />
+      {/* Leaf Spine */}
+      <path d="M7 24H41" stroke="#A8C458" strokeWidth="1.2" strokeDasharray="3 2" />
+      {/* Traditional bowls & delicacies */}
+      <circle cx="16" cy="18.5" r="3.2" fill="url(#goldThali)" />
+      <circle cx="24" cy="17.5" r="3.2" fill="url(#goldThali)" />
+      <circle cx="32" cy="18.5" r="3.2" fill="url(#goldThali)" />
+      <circle cx="15.5" cy="29" r="3.2" fill="url(#goldThali)" />
+      <ellipse cx="24" cy="29" rx="4.8" ry="3.2" fill="#FFFDF8" />
+      <circle cx="32.5" cy="29" r="3.2" fill="url(#goldThali)" />
+    </svg>
+  );
+}
+
+export function TimeIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="clockGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F5E6B0" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8C6E15" />
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="24" r="17" stroke="url(#clockGold)" strokeWidth="2.4" fill="#FFFDF9" />
+      <circle cx="24" cy="24" r="13.5" stroke="#D4AF37" strokeWidth="0.8" strokeDasharray="2 2" fill="none" opacity="0.6" />
+      <line x1="24" y1="10" x2="24" y2="12.5" stroke="#6B7D3A" strokeWidth="2" strokeLinecap="round" />
+      <line x1="38" y1="24" x2="35.5" y2="24" stroke="#6B7D3A" strokeWidth="2" strokeLinecap="round" />
+      <line x1="24" y1="38" x2="24" y2="35.5" stroke="#6B7D3A" strokeWidth="2" strokeLinecap="round" />
+      <line x1="10" y1="24" x2="12.5" y2="24" stroke="#6B7D3A" strokeWidth="2" strokeLinecap="round" />
+      {/* 5:00 PM time hands */}
+      <line x1="24" y1="24" x2="24" y2="15" stroke="#4F5D2A" strokeWidth="2.4" strokeLinecap="round" />
+      <line x1="24" y1="24" x2="30" y2="29.5" stroke="#D4AF37" strokeWidth="2.4" strokeLinecap="round" />
+      <circle cx="24" cy="24" r="2.2" fill="#4F5D2A" />
+      <circle cx="24" cy="24" r="0.8" fill="#FFFDF8" />
+    </svg>
+  );
+}
+
+export function HouseIcon({ className = "w-10 h-10" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="houseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#F5E6B0" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8C6E15" />
+        </linearGradient>
+      </defs>
+      {/* Traditional Kerala Roof */}
+      <path d="M24 7L6 21H42L24 7Z" fill="url(#houseGold)" />
+      <path d="M24 10.5L10.5 21H37.5L24 10.5Z" fill="#AA820A" opacity="0.25" />
+      <circle cx="24" cy="6" r="1.6" fill="url(#houseGold)" />
+      {/* Main House Wall */}
+      <rect x="10" y="21" width="28" height="18" rx="1.5" fill="#FFFDF9" stroke="url(#houseGold)" strokeWidth="1.8" />
+      {/* Verandah Pillars */}
+      <rect x="13.5" y="22.5" width="2.5" height="16.5" fill="#6B7D3A" rx="0.5" />
+      <rect x="32" y="22.5" width="2.5" height="16.5" fill="#6B7D3A" rx="0.5" />
+      {/* Ornate Door */}
+      <path d="M19.5 39V28C19.5 25.5 21.5 23.5 24 23.5C26.5 23.5 28.5 25.5 28.5 28V39H19.5Z" fill="#D4AF37" />
+      {/* Base Plinth */}
+      <rect x="7" y="39" width="34" height="3" rx="1" fill="url(#houseGold)" />
+    </svg>
+  );
+}
+
+export function MapPinIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="#D4AF37" stroke="#4F5D2A" strokeWidth="1.2" />
+      <circle cx="12" cy="9" r="3" fill="#FFFDF8" />
+    </svg>
+  );
+}
+
+export function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.651.075-.3-.15-1.267-.467-2.414-1.489-.893-.796-1.496-1.779-1.671-2.08-.175-.3-.019-.462.131-.611.136-.135.301-.35.451-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.63-.926-2.232-.244-.587-.492-.507-.676-.516-.175-.01-.375-.01-.575-.01s-.525.075-.8.375c-.275.3-1.05 1.026-1.05 2.502 0 1.476 1.075 2.903 1.225 3.104.15.2 2.115 3.23 5.124 4.531.716.31 1.275.495 1.71.634.72.229 1.375.197 1.893.12.578-.087 1.78-.727 2.03-1.429.25-.701.25-1.302.175-1.428-.075-.126-.275-.201-.575-.351zM12.05 2C6.54 2 2.06 6.48 2.06 11.99c0 1.9.53 3.68 1.46 5.2L2 22l4.97-1.45c1.47.85 3.18 1.34 5.08 1.34 5.51 0 9.99-4.48 9.99-9.99C22.04 6.48 17.56 2 12.05 2zm0 18.25c-1.63 0-3.15-.46-4.45-1.26l-.32-.2-3.3 1.04.91-3.2-.21-.34c-.87-1.38-1.33-2.98-1.33-4.65 0-4.57 3.72-8.29 8.3-8.29 4.58 0 8.3 3.72 8.3 8.29 0 4.57-3.72 8.3-8.3 8.3z" />
+    </svg>
+  );
+}
+
+export function CopyIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  );
+}
+
+export function MusicNoteIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  );
+}
 
 /* ═══════════════════════════════════════════════════
    PHOTO LOADER – elegant spinner until images ready
@@ -72,11 +301,11 @@ function PhotoLoader({ onComplete }: { onComplete: () => void }) {
       ))}
 
       <motion.div
-        className="text-4xl sm:text-5xl mb-6"
-        animate={{ rotate: [0, 12, -12, 0], scale: [1, 1.12, 1] }}
+        className="mb-6"
+        animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
       >
-        💍
+        <RingsIcon className="w-14 h-14 sm:w-16 sm:h-16" />
       </motion.div>
 
       {/* Circular progress ring */}
@@ -280,7 +509,7 @@ function EventCard({
   link,
   linkText,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   body: string;
   theme: EventTheme;
@@ -309,7 +538,7 @@ function EventCard({
     >
       <motion.div
         ref={ref}
-        className={`group relative h-full flex flex-col justify-between overflow-hidden rounded-2xl border border-[#D4AF37]/25 bg-white/80 p-6 sm:p-7 text-center shadow-md backdrop-blur-sm ${link ? "cursor-pointer" : "cursor-default"}`}
+        className={`group relative h-full flex flex-col justify-between items-center overflow-hidden rounded-2xl border border-[#D4AF37]/25 bg-white/85 p-6 sm:p-7 text-center shadow-md backdrop-blur-sm ${link ? "cursor-pointer" : "cursor-default"}`}
         whileHover={{ y: -6, scale: 1.02, borderColor: t.hoverBorder, boxShadow: t.hoverShadow }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 280, damping: 20 }}
@@ -317,11 +546,13 @@ function EventCard({
         onTouchStart={handleCardClick}
       >
         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: t.hoverBg }} />
-        <div>
-          <motion.span className="relative z-10 mb-2.5 inline-block text-3xl sm:text-4xl"
-            whileHover={{ scale: 1.15, rotate: [-5, 5, 0] }}
+        <div className="flex flex-col items-center w-full">
+          <motion.div className="relative z-10 mb-3 inline-flex items-center justify-center p-2 rounded-2xl bg-amber-50/60 border border-[#D4AF37]/20"
+            whileHover={{ scale: 1.12, rotate: [-4, 4, 0] }}
             transition={{ duration: 0.35 }}
-          >{icon}</motion.span>
+          >
+            {icon}
+          </motion.div>
           <h3 className="relative z-10 mb-1.5 font-serif text-xl sm:text-2xl text-[#4F5D2A]">{title}</h3>
           <p className="relative z-10 text-xs sm:text-sm leading-relaxed text-[#7A7266]">{body}</p>
         </div>
@@ -334,7 +565,7 @@ function EventCard({
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider uppercase bg-[#D4AF37]/15 text-[#4F5D2A] border border-[#D4AF37]/40 hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-sm"
             >
-              <span>📍</span>
+              <MapPinIcon className="w-3.5 h-3.5" />
               <span>{linkText || "Get Directions"}</span>
             </a>
           </div>
@@ -465,8 +696,8 @@ export default function Home() {
   const handleImagesLoaded = useCallback(() => setImagesReady(true), []);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroBgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroBgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   /* Typing splash */
   useEffect(() => {
@@ -591,10 +822,12 @@ export default function Home() {
             {petals.map((i) => <Petal key={i} delay={i * 0.3} />)}
             {hearts.map((x, i) => <FloatingHeart key={i} delay={i * 0.8} x={x} />)}
             <div className="text-center px-4 relative z-10 max-w-lg mx-auto">
-              <motion.div className="text-4xl sm:text-5xl mb-5"
+              <motion.div className="mb-4 inline-flex items-center justify-center"
                 initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
-              >💍</motion.div>
+              >
+                <RingsIcon className="w-14 h-14 sm:w-16 sm:h-16" />
+              </motion.div>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#4F5D2A] min-h-[50px] sm:min-h-[60px] leading-tight">
                 {displayedText}
                 <motion.span animate={{ opacity: [1, 0] }} transition={{ duration: 0.6, repeat: Infinity }}
@@ -612,7 +845,8 @@ export default function Home() {
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <span>🎵</span><span>Tap anywhere to start music</span>
+                  <MusicNoteIcon className="w-3.5 h-3.5" />
+                  <span>Tap anywhere to start music</span>
                 </motion.div>
               )}
             </div>
@@ -675,10 +909,7 @@ export default function Home() {
                 />
               ))}
               <span className="relative z-10">View Invitation</span>
-              <motion.span className="relative z-10 text-base sm:text-lg"
-                animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.25, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >💍</motion.span>
+              <RingsIcon className="relative z-10 w-4 h-4 text-white" />
             </motion.button>
           </motion.div>
 
@@ -697,7 +928,7 @@ export default function Home() {
         <section id="countdown" className="py-16 sm:py-20 px-4 bg-gradient-to-b from-[#f4ede0] to-[#fcfaf6]">
           <FadeSection className="max-w-3xl mx-auto text-center">
             <p className="text-xs sm:text-sm tracking-[0.3em] uppercase text-[#7A7266] mb-6 sm:mb-8 font-medium">
-              {countdown.arrived ? "The wedding day has arrived 💍" : "Counting down to forever"}
+              {countdown.arrived ? "The wedding day has arrived" : "Counting down to forever"}
             </p>
             {!countdown.arrived && (
               <div className="flex items-start justify-center gap-2.5 sm:gap-5 md:gap-8">
@@ -778,67 +1009,80 @@ export default function Home() {
           <SectionArrow nextId="couple" />
         </section>
 
-        {/* ═══════════ THE COUPLE SECTION (HIGH CLARITY CLOSE-UP SPOTLIGHT) ═══════════ */}
-        <section id="couple" className="py-20 sm:py-24 px-4 bg-gradient-to-b from-[#fcfaf6] to-[#f6f1e8]">
-          <FadeSection className="max-w-4xl mx-auto text-center">
+        {/* ═══════════ THE COUPLE SECTION ═══════════ */}
+        <section id="couple" className="py-20 sm:py-24 px-4 bg-gradient-to-b from-[#fcfaf6] to-[#f6f1e8] relative overflow-hidden">
+          <AmbientGlow colors="radial-gradient(circle, rgba(107,125,58,0.12) 0%, rgba(212,175,55,0.1) 50%, transparent 70%)" />
+          <FadeSection className="max-w-4xl mx-auto text-center relative z-10">
             <SectionTitle accent="ceremony">The Couple</SectionTitle>
             <Ornament />
-            <p className="text-xs sm:text-sm tracking-widest uppercase text-[#7A7266] max-w-lg mx-auto mb-10 sm:mb-12">
+            <p className="text-xs sm:text-sm tracking-widest uppercase text-[#7A7266] max-w-lg mx-auto mb-10 sm:mb-14">
               Two lives, two hearts, joined together in friendship, united forever in love
             </p>
           </FadeSection>
 
-          {/* Unified Couple Feature Card */}
-          <div className="max-w-4xl mx-auto">
-            <FadeSection>
-              <div className="overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-white/85 shadow-xl backdrop-blur-md grid grid-cols-1 md:grid-cols-12 gap-0">
-                
-                {/* Photo Column */}
-                <div className="md:col-span-6 relative aspect-[3/4] md:aspect-auto overflow-hidden bg-[#ede5d8]">
-                  <img
-                    src="/couple1.jpg"
-                    alt="Sarath Raj & Athira Raj"
-                    className="w-full h-full object-cover object-[center_28%] transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/35 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white md:hidden">
-                    <p className="text-xs tracking-[0.25em] uppercase text-[#D4AF37] font-semibold">Sarath &amp; Athira</p>
-                    <p className="font-serif text-lg">Moments of Love</p>
+          {/* Individual Groom & Bride Cards */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 relative z-10">
+            {[
+              {
+                src: "/groom.jpg",
+                role: "The Groom",
+                name: "Sarath Raj",
+                father: "Mr. Rajan TK",
+                mother: "Mrs. Sasikala",
+                family: "Son of Mr. Rajan TK & Mrs. Sasikala",
+                objectPos: "center 20%",
+              },
+              {
+                src: "/bride.jpg",
+                role: "The Bride",
+                name: "Athira Raj",
+                father: "Mr. Rajan M",
+                mother: "Mrs. Bindhu",
+                family: "Daughter of Mr. Rajan M & Mrs. Bindhu",
+                objectPos: "center 25%",
+              },
+            ].map((person) => (
+              <FadeSection key={person.role}>
+                <motion.div
+                  className="group relative overflow-hidden rounded-3xl border border-[#D4AF37]/35 bg-white shadow-xl backdrop-blur-md transition-all duration-500 flex flex-col justify-between"
+                  whileHover={{ y: -8, boxShadow: "0 30px 60px -15px rgba(107,125,58,0.25)", borderColor: "rgba(212,175,55,0.6)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Photo Frame */}
+                  <div className="relative aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-[#ede5d8]">
+                    <motion.img
+                      src={person.src}
+                      alt={person.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: person.objectPos }}
+                    />
+                    {/* Multi-stop gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                    
+                    {/* Overlay info on image */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
+                      <span className="inline-block px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase bg-[#D4AF37] text-white mb-2 shadow-md">
+                        {person.role}
+                      </span>
+                      <h3 className="text-3xl sm:text-4xl font-serif text-white mb-2 leading-tight drop-shadow-md">
+                        {person.name}
+                      </h3>
+                      <p className="text-white/90 text-xs sm:text-sm leading-relaxed font-light">
+                        {person.family}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Details Column */}
-                <div className="md:col-span-6 p-7 sm:p-10 flex flex-col justify-center text-center md:text-left bg-gradient-to-br from-white/90 to-[#fdfbf7]">
-                  
-                  {/* Groom Details */}
-                  <div className="mb-6 pb-6 border-b border-[#D4AF37]/20">
-                    <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#b89a63]">The Groom</span>
-                    <h3 className="text-2xl sm:text-3xl font-serif text-[#4F5D2A] mt-1 mb-1">Sarath Raj</h3>
-                    <p className="text-xs sm:text-sm text-[#7A7266] leading-relaxed">
-                      Son of <strong className="text-[#4F5D2A] font-medium">Mr. Rajan TK</strong> &amp; <strong className="text-[#4F5D2A] font-medium">Mrs. Sasikala</strong>
-                    </p>
+                  {/* Card Bottom Accent */}
+                  <div className="p-5 sm:p-6 bg-gradient-to-b from-[#fffdfa] to-[#fbf8f2] text-center border-t border-[#D4AF37]/20 flex items-center justify-center gap-2">
+                    <RingsIcon className="w-4 h-4 text-[#D4AF37]" />
+                    <span className="text-xs text-[#7A7266] tracking-widest uppercase font-medium">
+                      {person.role === "The Groom" ? "Groom's Family" : "Bride's Family"}
+                    </span>
                   </div>
-
-                  {/* Bride Details */}
-                  <div className="mb-6">
-                    <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#b89a63]">The Bride</span>
-                    <h3 className="text-2xl sm:text-3xl font-serif text-[#4F5D2A] mt-1 mb-1">Athira Raj</h3>
-                    <p className="text-xs sm:text-sm text-[#7A7266] leading-relaxed">
-                      Daughter of <strong className="text-[#4F5D2A] font-medium">Mr. Rajan M</strong> &amp; <strong className="text-[#4F5D2A] font-medium">Mrs. Bindhu</strong>
-                    </p>
-                  </div>
-
-                  {/* Auspicious note */}
-                  <div className="pt-2">
-                    <p className="text-xs text-[#b89a63] italic font-serif">
-                      "Seeking the gracious presence and warm blessings of our loved ones"
-                    </p>
-                  </div>
-
-                </div>
-
-              </div>
-            </FadeSection>
+                </motion.div>
+              </FadeSection>
+            ))}
           </div>
 
           <SectionArrow nextId="events" />
@@ -853,10 +1097,10 @@ export default function Home() {
           </FadeSection>
           <div className="relative z-10 mx-auto mt-10 sm:mt-12 grid max-w-4xl gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2">
             {[
-              { icon: "📅", title: "Date", body: "13 September 2026 · Sunday" },
-              { icon: "✨", title: "Muhurtham", body: "07:00 AM – 08:00 AM" },
-              { icon: "🛕", title: "Venue", body: "Wedding Venue", link: MAP_LOCATION_URL, linkText: "Get Directions 📍" },
-              { icon: "🍽️", title: "Lunch", body: "Traditional Sadhya Feast to follow" },
+              { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
+              { icon: <MuhurthamIcon className="w-12 h-12" />, title: "Muhurtham", body: "07:00 AM – 08:00 AM" },
+              { icon: <TempleIcon className="w-12 h-12" />, title: "Venue", body: "Guruvayur Shri Krishna Temple", link: MAP_LOCATION_URL, linkText: "Get Directions" },
+              { icon: <FeastIcon className="w-12 h-12" />, title: "Lunch", body: "Traditional Sadhya Feast to follow" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="ceremony" index={i} />
             ))}
@@ -873,9 +1117,9 @@ export default function Home() {
           </FadeSection>
           <div className="relative z-10 mx-auto mt-10 sm:mt-12 grid max-w-4xl gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-3">
             {[
-              { icon: "📅", title: "Date", body: "13 September 2026 · Sunday" },
-              { icon: "🕔", title: "Time", body: "5:00 PM – 9:00 PM" },
-              { icon: "🏛️", title: "Venue", body: "Reception Hall", link: MAP_LOCATION_URL, linkText: "Get Directions 📍" },
+              { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
+              { icon: <TimeIcon className="w-12 h-12" />, title: "Time", body: "5:00 PM – 9:00 PM" },
+              { icon: <HouseIcon className="w-12 h-12" />, title: "Venue", body: "Groom's House", link: MAP_LOCATION_URL, linkText: "Get Directions" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="reception" index={i} />
             ))}
@@ -909,12 +1153,12 @@ export default function Home() {
               {/* Location info bar & direct link button */}
               <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-5 bg-gradient-to-r from-[#fffdfa] via-[#fbf8f2] to-[#fffdfa]">
                 <div className="text-center md:text-left">
-                  <div className="flex items-center justify-center md:justify-start gap-2 text-[#4F5D2A] font-serif text-lg sm:text-2xl mb-1">
-                    <span>📍</span>
-                    <span>Wedding &amp; Reception Venue</span>
+                  <div className="flex items-center justify-center md:justify-start gap-2.5 text-[#4F5D2A] font-serif text-lg sm:text-2xl mb-1">
+                    <MapPinIcon className="w-5 h-5" />
+                    <span>Guruvayur Shri Krishna Temple</span>
                   </div>
                   <p className="text-[#7A7266] text-xs sm:text-sm">
-                    Coordinates: <span className="font-mono text-[#4F5D2A] font-medium">11.042263, 75.858437</span>
+                    Guruvayoor, Thrissur, Kerala
                   </p>
                 </div>
 
@@ -925,9 +1169,7 @@ export default function Home() {
                   className="w-full md:w-auto group relative inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#D4AF37] text-white font-medium text-xs sm:text-sm tracking-[0.15em] uppercase shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden cursor-pointer"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
+                  <MapPinIcon className="w-4 h-4" />
                   <span className="relative z-10">Open in Google Maps</span>
                 </a>
               </div>
@@ -961,7 +1203,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-medium shadow hover:opacity-90 active:scale-95 transition-transform cursor-pointer"
                 >
-                  <span>💬</span>
+                  <WhatsAppIcon className="w-4 h-4" />
                   <span>WhatsApp</span>
                 </a>
 
@@ -970,7 +1212,7 @@ export default function Home() {
                   onClick={handleCopyLink}
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#D4AF37] text-white text-xs sm:text-sm font-medium shadow hover:bg-[#c29e2f] active:scale-95 transition-transform cursor-pointer"
                 >
-                  <span>{copied ? "✓" : "📋"}</span>
+                  <CopyIcon className="w-4 h-4" />
                   <span>{copied ? "Copied!" : "Copy Link"}</span>
                 </button>
               </div>
@@ -980,9 +1222,9 @@ export default function Home() {
 
         {/* ═══════════ FOOTER ═══════════ */}
         <footer className="bg-[#fdfbf7] border-t border-[#D4AF37]/20 py-14 sm:py-16 px-4 text-center">
-          <motion.div className="text-3xl sm:text-4xl mb-3"
-            animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >💍</motion.div>
+          <div className="mb-3 inline-flex items-center justify-center">
+            <RingsIcon className="w-8 h-8 sm:w-10 sm:h-10" />
+          </div>
           <p className="text-2xl sm:text-3xl font-serif text-[#4F5D2A] mb-2">We look forward to your gracious presence</p>
           <Ornament />
           <p className="text-[#7A7266] tracking-widest text-xs sm:text-sm uppercase mt-3 font-medium">
