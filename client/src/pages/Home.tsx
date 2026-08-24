@@ -1101,7 +1101,6 @@ export default function Home() {
               { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
               { icon: <MuhurthamIcon className="w-12 h-12" />, title: "Muhurtham", body: "07:00 AM – 08:00 AM" },
               { icon: <TempleIcon className="w-12 h-12" />, title: "Venue", body: "Guruvayur Shri Krishna Temple", link: MAP_LOCATION_URL, linkText: "Get Directions" },
-              { icon: <FeastIcon className="w-12 h-12" />, title: "Reception", body: "12 PM onwards" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="ceremony" index={i} />
             ))}
@@ -1116,10 +1115,9 @@ export default function Home() {
             <SectionTitle accent="reception">Reception</SectionTitle>
             <Ornament />
           </FadeSection>
-          <div className="relative z-10 mx-auto mt-10 sm:mt-12 grid max-w-4xl gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-3">
+          <div className="relative z-10 mx-auto mt-10 sm:mt-12 grid max-w-4xl gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2">
             {[
-              { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
-              { icon: <TimeIcon className="w-12 h-12" />, title: "Time", body: "5:00 PM – 9:00 PM" },
+              { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday · 12 PM onwards" },
               { icon: <HouseIcon className="w-12 h-12" />, title: "Venue", body: "Groom's House", link: GROOM_HOME_URL, linkText: "Get Directions" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="reception" index={i} />
