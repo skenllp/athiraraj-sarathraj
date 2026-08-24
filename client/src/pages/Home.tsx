@@ -1175,47 +1175,99 @@ export default function Home() {
               </div>
             </div>
           </FadeSection>
+          <SectionArrow nextId="gallery" />
+        </section>
+
+        {/* ═══════════ MOMENTS OF LOVE / GALLERY SECTION ═══════════ */}
+        <section id="gallery" className="py-20 sm:py-24 px-4 bg-gradient-to-b from-[#fdfbf7] to-[#f6f1e8] relative overflow-hidden">
+          <AmbientGlow colors="radial-gradient(circle, rgba(212,175,55,0.14) 0%, rgba(107,125,58,0.1) 40%, transparent 70%)" />
+          <FadeSection className="max-w-4xl mx-auto text-center relative z-10">
+            <SectionTitle accent="gold">Moments of Love</SectionTitle>
+            <Ornament />
+            <p className="text-xs sm:text-sm tracking-widest uppercase text-[#7A7266] max-w-lg mx-auto mb-10 sm:mb-14">
+              A glimpse of our beautiful journey together
+            </p>
+          </FadeSection>
+
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 relative z-10">
+            {[
+              {
+                src: "/couple2.jpg",
+                title: "Traditional Grace",
+                subtitle: "Sacred Beginnings",
+                objectPos: "center 22%",
+              },
+              {
+                src: "/couple1.jpg",
+                title: "Moments of Love",
+                subtitle: "Two Souls, One Journey",
+                objectPos: "center 30%",
+              },
+            ].map((photo, idx) => (
+              <FadeSection key={idx} className="h-full">
+                <motion.div
+                  className="group relative h-[420px] sm:h-[480px] md:h-[520px] overflow-hidden rounded-3xl border border-[#D4AF37]/30 bg-white shadow-xl backdrop-blur-sm cursor-pointer"
+                  whileHover={{ y: -8, scale: 1.02, boxShadow: "0 30px 60px -12px rgba(107,125,58,0.28)", borderColor: "rgba(212,175,55,0.6)" }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                >
+                  <motion.img
+                    src={photo.src}
+                    alt={photo.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                    style={{ objectPosition: photo.objectPos }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white text-center md:text-left">
+                    <span className="text-[10px] sm:text-xs tracking-[0.3em] uppercase text-[#D4AF37] font-semibold mb-1 block">
+                      {photo.subtitle}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-serif text-white leading-tight drop-shadow-md">
+                      {photo.title}
+                    </h3>
+                  </div>
+
+                  <div className="absolute top-4 right-4 p-2.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <RingsIcon className="w-4 h-4 text-[#D4AF37]" />
+                  </div>
+                </motion.div>
+              </FadeSection>
+            ))}
+          </div>
+
           <SectionArrow nextId="share" />
         </section>
 
-        {/* ═══════════ SHARE & INVITATION LINK SECTION ═══════════ */}
+        {/* ═══════════ SHARE INVITATION SECTION ═══════════ */}
         <section id="share" className="py-16 sm:py-20 px-4 bg-gradient-to-b from-[#f6f1e8] to-[#fdfbf7]">
-          <FadeSection className="max-w-3xl mx-auto text-center">
+          <FadeSection className="max-w-2xl mx-auto text-center">
             <SectionTitle accent="gold">Share Invitation</SectionTitle>
             <Ornament />
-            <p className="text-xs sm:text-sm text-[#7A7266] max-w-lg mx-auto mb-8">
-              Share the joy with family &amp; friends
+            <p className="text-xs sm:text-sm text-[#7A7266] max-w-md mx-auto mb-8">
+              Share the joy and invite family &amp; friends
             </p>
 
-            <div className="bg-white/80 backdrop-blur-sm border border-[#D4AF37]/30 rounded-3xl p-6 sm:p-8 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-left w-full sm:w-auto">
-                <p className="text-[11px] uppercase tracking-widest text-[#b89a63] font-semibold">Official Invitation Link</p>
-                <p className="text-sm sm:text-base font-mono text-[#4F5D2A] mt-0.5 truncate max-w-[280px] sm:max-w-none">
-                  {SITE_URL}
-                </p>
-              </div>
+            <div className="bg-white/85 backdrop-blur-sm border border-[#D4AF37]/30 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col sm:flex-row items-center justify-center gap-4">
+              {/* WhatsApp Share */}
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent("💍 You are cordially invited to the wedding celebration of Athira Raj & Sarath Raj! View invitation: " + SITE_URL)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-medium shadow-md hover:opacity-95 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                <span>Share via WhatsApp</span>
+              </a>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
-                {/* WhatsApp Share */}
-                <a
-                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent("💍 You are cordially invited to the wedding celebration of Athira Raj & Sarath Raj! View invitation: " + SITE_URL)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-medium shadow hover:opacity-90 active:scale-95 transition-transform cursor-pointer"
-                >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  <span>WhatsApp</span>
-                </a>
-
-                {/* Copy Link Button */}
-                <button
-                  onClick={handleCopyLink}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#D4AF37] text-white text-xs sm:text-sm font-medium shadow hover:bg-[#c29e2f] active:scale-95 transition-transform cursor-pointer"
-                >
-                  <CopyIcon className="w-4 h-4" />
-                  <span>{copied ? "Copied!" : "Copy Link"}</span>
-                </button>
-              </div>
+              {/* Copy Link Button */}
+              <button
+                onClick={handleCopyLink}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-[#D4AF37] text-white text-xs sm:text-sm font-medium shadow-md hover:bg-[#c29e2f] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              >
+                <CopyIcon className="w-4 h-4" />
+                <span>{copied ? "Link Copied!" : "Copy Link"}</span>
+              </button>
             </div>
           </FadeSection>
         </section>
@@ -1229,9 +1281,6 @@ export default function Home() {
           <Ornament />
           <p className="text-[#7A7266] tracking-widest text-xs sm:text-sm uppercase mt-3 font-medium">
             Athira Raj &amp; Sarath Raj · 13 September 2026
-          </p>
-          <p className="text-[11px] text-[#b89a63] mt-2 font-mono">
-            athiraraj-sarathraj.vercel.app
           </p>
         </footer>
 
