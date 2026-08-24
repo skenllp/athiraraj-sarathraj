@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSp
 ═══════════════════════════════════════════════════ */
 const SITE_URL = "https://athiraraj-sarathraj.vercel.app/";
 const MAP_LOCATION_URL = "https://maps.app.goo.gl/5574fqVibNAKak8k9";
+const GROOM_HOME_URL = "https://maps.google.com/?q=11.042263,75.858437";
 const MAP_EMBED_URL = "https://maps.google.com/maps?q=Guruvayur+Shri+Krishna+Temple&hl=en&z=16&output=embed";
 
 const PRELOAD_IMAGES = [
@@ -1119,7 +1120,7 @@ export default function Home() {
             {[
               { icon: <CalendarIcon className="w-12 h-12" />, title: "Date", body: "13 September 2026 · Sunday" },
               { icon: <TimeIcon className="w-12 h-12" />, title: "Time", body: "5:00 PM – 9:00 PM" },
-              { icon: <HouseIcon className="w-12 h-12" />, title: "Venue", body: "Groom's House", link: MAP_LOCATION_URL, linkText: "Get Directions" },
+              { icon: <HouseIcon className="w-12 h-12" />, title: "Venue", body: "Groom's House", link: GROOM_HOME_URL, linkText: "Get Directions" },
             ].map((item, i) => (
               <EventCard key={item.title} {...item} theme="reception" index={i} />
             ))}
